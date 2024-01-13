@@ -1,39 +1,54 @@
 import React from 'react'
 import {useState} from 'react'
 import RemoveIcon from '../assets/icon-delete.svg'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-const Cart = ({cartItems,handleDelete,total,emptyMsg,handleCount,count}) => {
+const Cart = ({cartItems,handleDelete,total,handleCount,count}) => {
     
+
+  
+
+    
+
   return (
     <div className='cart-state'>
         <div className="cart-heading">
             <h2>Cart</h2>
-            {emptyMsg}
+            {/* {emptyMsg} */}
+    
             
         </div>
-            
-        {cartItems.map((item, id) =>(
-            <div className="product-in-cart" key={item.id}>
-                <div><p>{item.img}</p></div>
-                
-                <div>
-                    <p>{item.product}</p>
-                    <p>${item.price}</p>
-                    <p>{()=>total()}</p>
+            <div className="cart-item">
+
+            {cartItems.map((item, id) =>(
+                <div className="" key={item.id}>
+                            <div className="">
+
+                <div className="product-in-cart" >
+                    <div><p>{item.img}</p></div>
+                    
+                    <div>
+                        <p>{item.product}</p>
+                        <p>${item.price}</p>
+                        
+                    </div>
+                    
+
+                    <img src={RemoveIcon} alt="" height="20px"  onClick={(id)=>handleDelete(item.id)}/>
+                </div>
+                    
+                   
                 </div>
                 
-
-                <img src={RemoveIcon} alt="" height="20px"  onClick={(id)=>handleDelete(item.id)}/>
                 
+                <button className='checkout-btn'>Checkout</button>
+                            </div>
+            ))}
+
+      
+
             </div>
-            
-            
-        ))}
-
-        <p>{emptyMsg}</p>
-
-       
-        <button className='checkout-btn'>Checkout</button>
     </div>
   )
 }

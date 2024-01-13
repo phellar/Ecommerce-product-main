@@ -4,6 +4,9 @@ import Header from './Components/Header'
 import Product from './Components/Product'
 import ProductImg from './assets/image-product-1.jpg'
 import {v4 as uuidv4} from 'uuid'
+import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 function App() {
@@ -11,7 +14,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [isOpen, setIsopen] = useState(false)
   const [isToggle, setIsToggle] = useState(false)
-  const [emptyMsg, setEmptyMsg] = useState("")
+  const [isEmpty, setIsEmpty] = useState(false)
   const [cartItems, setCartItems] = useState([
     // {
     //   id: 1, product: 
@@ -60,8 +63,9 @@ function App() {
         }
       }
 
+
       // Add product to cart
-      const handleAdd = ()=>{
+      const handleAdd = () => {
           if(count >= 1){
             const newProduct ={
               id: uuidv4(), product: 
@@ -71,35 +75,54 @@ function App() {
             } 
           // console.log(newProduct)
           setCartItems([newProduct,...cartItems])
-
+          setCount(0)
+          notification();  
           }
 
-          // calculateTotal
-            // const total =()=>{
-            //   cartItems.price * cartItems.length
-            // }
-
       }
+
        
-     
-    
+      // Display Notification when product is being added to cart
 
-
-
- 
-
+      const notification = () => {
+        toast.success('product Added to Cart', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          }); 
+      }
 
 
 
   return (
     <>
+    
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
+   
+
       <Header isOpen ={isOpen}
             cartOpen ={cartOpen}
             cartItems={cartItems}
             handleDelete ={handleDelete}
             handleToggle ={handleToggle}
             isToggle={isToggle}
-            emptyMsg={emptyMsg}
+            // emptyMsg={handleCartMessage}
             handleAdd={handleAdd}
             handleCount = {handleCount}
             handleDecreaseCount = {handleDecreaseCount}
@@ -118,6 +141,7 @@ function App() {
             count={count}
             handleAdd={handleAdd}
             cartItems={cartItems}
+            handleNotification ={notification}
             // total ={total}
             
             

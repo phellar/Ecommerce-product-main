@@ -7,7 +7,8 @@ import Cart from './Cart'
 import { useState } from 'react'
 
 
-const Header = ({isOpen, cartOpen,cartItems,total,isToggle,handleToggle,handleDelete,emptyMsg,handleAdd,handleCount,handleDecreaseCount,count}) => {
+
+const Header = ({isOpen, cartOpen,cartItems,total,isToggle,handleToggle,handleDelete,handleAdd,handleCount,handleDecreaseCount,count}) => {
   return (
     <>
     
@@ -61,13 +62,13 @@ const Header = ({isOpen, cartOpen,cartItems,total,isToggle,handleToggle,handleDe
             </nav>
             {isOpen && <Cart cartItems={cartItems}
              handleDelete={handleDelete}
-             emptyMsg ={emptyMsg}
+            //  emptyMsg={handleCartMessage}
              
             //  handleAdd={handleAdd}
              handleCount = {handleCount}
             handleDecreaseCount = {handleDecreaseCount}
             count={count}
-            // total ={total}
+         
          
               /> }
 

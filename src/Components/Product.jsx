@@ -8,7 +8,8 @@ import Plus from '../assets/icon-plus.svg'
 import Minus from '../assets/icon-minus.svg'
 import { useState } from 'react'
 
-const Product = ({handleCount,count,total,handleDecreaseCount,handleAdd,cartItems}) => {
+
+const Product = ({handleCount,count,total,handleNotification,handleDecreaseCount,handleAdd,cartItems}) => {
   return (
     
     <div className="product-section">
