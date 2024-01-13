@@ -21,33 +21,40 @@ const Cart = ({cartItems,handleDelete,total,handleCount,count}) => {
         </div>
             <div className="cart-item">
 
-            {cartItems.map((item, id) =>(
+                {cartItems.length >=1 ? <div className="">
+                {cartItems.map((item, id) =>(
                 <div className="" key={item.id}>
-                            <div className="">
+                        <div className="">
 
-                <div className="product-in-cart" >
-                    <div><p>{item.img}</p></div>
-                    
-                    <div>
-                        <p>{item.product}</p>
-                        <p>${item.price}</p>
-                        
-                    </div>
+                            <div className="product-in-cart" >
+                                <div><p>{item.img}</p></div>
+                                
+                                <div>
+                                    <p>{item.product}</p>
+                                    <p>${item.price}</p>
+                                    
+                                </div>
                     
 
-                    <img src={RemoveIcon} alt="" height="20px"  onClick={(id)=>handleDelete(item.id)}/>
-                </div>
+                            <img src={RemoveIcon} alt="" height="20px"  onClick={(id)=>handleDelete(item.id)}/>
+                        </div>
                     
                    
                 </div>
                 
                 
-                <button className='checkout-btn'>Checkout</button>
                             </div>
-            ))}
+                
+                ))}
+            <div className="">
+                <button className='checkout-btn'>Checkout</button>
+
+            </div>
+                </div> : <h4 className='empty-cart'>Your cart is empty.</h4>}
+
+            
 
       
-
             </div>
     </div>
   )
